@@ -8,6 +8,8 @@ private:
 	float y_delta;
 
 public:
-	Ball(float radius, sf::Vector2u&& window_size);
+	Ball(float radius, float delta_value, sf::Vector2u&& window_size);
+	void move();
+	void collision(sf::Vector2u&& window_size);
 };
 
