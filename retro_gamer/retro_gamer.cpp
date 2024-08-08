@@ -1,5 +1,6 @@
-#include <iostream>
+#include "Pong.h"
 
 int main() {
-	std::cout << "PONG!";
+    Pong pong;
+    pong.run();
 }
