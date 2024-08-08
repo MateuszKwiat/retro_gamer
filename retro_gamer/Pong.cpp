@@ -2,7 +2,7 @@
 
 Pong::Pong(int x_window, int y_window) {
 	window = new sf::RenderWindow(sf::VideoMode(x_window, y_window), "Pong");
-    ball = new Ball(20.f);
+    ball = new Ball(window->getSize().x / 50.f, window->getSize());
 }
 
 Pong::~Pong() {

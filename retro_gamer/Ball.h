@@ -8,6 +8,6 @@ private:
 	float y_delta;
 
 public:
-	Ball(float radius);
+	Ball(float radius, sf::Vector2u&& window_size);
 };
 
