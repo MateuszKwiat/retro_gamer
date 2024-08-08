@@ -1,7 +1,8 @@
 #include "Pong.h"
 
-Pong::Pong() {
-	window = new sf::RenderWindow(sf::VideoMode(200, 200), "Pong");
+Pong::Pong(int x_window, int y_window) {
+	window = new sf::RenderWindow(sf::VideoMode(x_window, y_window), "Pong");
+    ball = new Ball(20.f);
 }
 
 Pong::~Pong() {
@@ -19,7 +20,7 @@ void Pong::run() {
         }
 
         window->clear();
-
+        window->draw(*ball);
         window->display();
     }
 }
