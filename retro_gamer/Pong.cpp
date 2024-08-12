@@ -3,17 +3,19 @@
 Pong::Pong(const int x_window, const int y_window) {
     window = new sf::RenderWindow(sf::VideoMode(x_window, y_window), 
         "Pong", sf::Style::Fullscreen);
-    ball = new Ball(window->getSize().x / 100.f, 1.f, window->getSize());
     player_one = new Paddle(1.f, window->getSize().x / 40.f, window->getSize(),
         sf::Keyboard::W, sf::Keyboard::S);
     player_two = new Paddle(1.f, window->getSize().x - window->getSize().x / 40.f, 
         window->getSize(), sf::Keyboard::P, sf::Keyboard::L);
+    net = new Net(window->getSize());
+    ball = new Ball(window->getSize().x / 100.f, 1.f, window->getSize());
 
 }
 
 Pong::~Pong() {
     delete player_one;
     delete player_two;
+    delete net;
     delete ball;
     delete window;
 }
@@ -40,6 +42,11 @@ void Pong::run() {
         
         window->draw(*player_two);
         window->draw(*player_one);
+
+        for (auto net_part : net->get_vector()) {
+            window->draw(*net_part);
+        }
+
         window->draw(*ball);
 
         window->display();
