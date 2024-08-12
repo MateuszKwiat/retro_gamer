@@ -8,6 +8,7 @@ Pong::Pong(const int x_window, const int y_window) {
     player_two = new Paddle(1.f, window->getSize().x - window->getSize().x / 40.f, 
         window->getSize(), sf::Keyboard::P, sf::Keyboard::L);
     net = new Net(window->getSize());
+    score = new Score(window->getSize());
     ball = new Ball(window->getSize().x / 100.f, 1.f, window->getSize());
 
 }
@@ -16,6 +17,7 @@ Pong::~Pong() {
     delete player_one;
     delete player_two;
     delete net;
+    delete score;
     delete ball;
     delete window;
 }
@@ -47,6 +49,7 @@ void Pong::run() {
             window->draw(*net_part);
         }
 
+        //window->draw(score->getSprite());
         window->draw(*ball);
 
         window->display();

@@ -5,6 +5,7 @@
 
 #include "Paddle.h"
 #include "Net.h"
+#include "Score.h"
 #include "Ball.h"
 
 class Pong {
@@ -13,6 +14,7 @@ private:
 	Paddle* player_one;
 	Paddle* player_two;
 	Net* net;
+	Score* score;
 	Ball* ball;
 
 public:
