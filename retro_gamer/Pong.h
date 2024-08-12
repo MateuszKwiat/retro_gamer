@@ -11,6 +11,7 @@ private:
 	sf::RenderWindow* window;
 	Ball* ball;
 	Paddle* player_one;
+	Paddle* player_two;
 
 public:
 	Pong(int x_window, int y_window);
