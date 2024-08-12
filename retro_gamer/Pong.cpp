@@ -3,7 +3,7 @@
 Pong::Pong(const int x_window, const int y_window) {
     window = new sf::RenderWindow(sf::VideoMode(x_window, y_window), 
         "Pong", sf::Style::Fullscreen);
-    ball = new Ball(window->getSize().x / 100.f, 0.5f, window->getSize());
+    ball = new Ball(window->getSize().x / 100.f, 1.f, window->getSize());
     player_one = new Paddle(1.f, window->getSize().x / 40.f, window->getSize(),
         sf::Keyboard::W, sf::Keyboard::S);
     player_two = new Paddle(1.f, window->getSize().x - window->getSize().x / 40.f, 
@@ -34,8 +34,7 @@ void Pong::run() {
         player_two->move(window->getSize().y);
 
         ball->move();
-        ball->collisions(window->getSize(),player_one->getSize(),
-            player_one->getPosition(), player_two->getPosition());
+        ball->collisions(window->getSize(), *player_one, *player_two);
 
         window->clear();
         
