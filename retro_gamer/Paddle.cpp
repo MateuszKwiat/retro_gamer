@@ -11,11 +11,11 @@ Paddle::Paddle(float move_value, float x_position, sf::Vector2u&& window_size,
 }
 
 void Paddle::move(unsigned int y_window) {
-	if (sf::Keyboard::isKeyPressed(up_key) && y_position > 0) {
+	if (sf::Keyboard::isKeyPressed(up_key) && y_position > this->getSize().y / 2.f) {
 		y_position -= move_value;
 		this->setPosition(sf::Vector2f(this->getPosition().x, y_position));
 	}
-	if (sf::Keyboard::isKeyPressed(down_key) && y_position < y_window) {
+	if (sf::Keyboard::isKeyPressed(down_key) && y_position < y_window - this->getSize().y / 2.f) {
 		y_position += move_value;
 		this->setPosition(sf::Vector2f(this->getPosition().x, y_position));
 	}

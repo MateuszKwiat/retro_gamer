@@ -3,8 +3,8 @@
 Pong::Pong(int x_window, int y_window) {
     window = new sf::RenderWindow(sf::VideoMode(x_window, y_window), 
         "Pong", sf::Style::Fullscreen);
-    ball = new Ball(window->getSize().x / 50.f, 1.f, window->getSize());
-    player_one = new Paddle(2.f, window->getSize().x / 40, window->getSize(),
+    ball = new Ball(window->getSize().x / 100.f, 1.f, window->getSize());
+    player_one = new Paddle(1.f, window->getSize().x / 40, window->getSize(),
         sf::Keyboard::W, sf::Keyboard::S);
 
 }
