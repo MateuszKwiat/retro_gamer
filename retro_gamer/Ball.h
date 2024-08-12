@@ -7,9 +7,14 @@ private:
 	float x_delta;
 	float y_delta;
 
+	bool paddleCollision(const bool player_one, const sf::Vector2f& player_size,
+		const sf::Vector2f& player_position);
+	bool wallCollision(const sf::Vector2u& window_size);
+
 public:
-	Ball(float radius, float delta_value, sf::Vector2u&& window_size);
+	Ball(const float radius, const float delta_value, const sf::Vector2u&& window_size);
 	void move();
-	void collision(sf::Vector2u&& window_size);
+	void collisions(const sf::Vector2u&& window_size, const sf::Vector2f& player_size,
+		const sf::Vector2f& player_one_position, const sf::Vector2f& player_two_position);
 };
 

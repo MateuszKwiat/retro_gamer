@@ -14,7 +14,7 @@ private:
 	Paddle* player_two;
 
 public:
-	Pong(int x_window, int y_window);
+	Pong(const int x_window, const int y_window);
 	~Pong();
 	void run();
 };
