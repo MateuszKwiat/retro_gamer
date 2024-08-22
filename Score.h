@@ -2,12 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
-class Score {
+class Score : public sf::Text {
 private:
     int score;
-    sf::Text* text;
+    sf::Font font;
 
 public:
     Score(const sf::Vector2u& window_size);
-    sf::Text getSprite() { return *text; }
 };

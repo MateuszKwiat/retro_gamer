@@ -2,11 +2,16 @@
 #include <iostream>
 
 Score::Score(const sf::Vector2u& window_size) : score(0) {
-    sf::Font font;
-    if (!font.loadFromFile("ARIAL.TTF"))
+    if (!font.loadFromFile("/Users/mateuszkwiatkowski/Projects/retro_gamer/Impact.ttf"))
         std::cerr << "Can't load font";
 
-    text = new sf::Text("aaa", font);
+    this->setFont(font);
+    this->setString(std::to_string(score));
+    this->setOrigin(sf::Vector2f(this->getLocalBounds().width / 2.f, this->getLocalBounds().height / 2.f));
+    this->setCharacterSize(30);
+    this->setFillColor(sf::Color::White);
+    this->setPosition(sf::Vector2f(window_size.x / 4.f, window_size.y / 20.f));
+
 
     //this->setFont(font);
     //this->setCharacterSize(30);

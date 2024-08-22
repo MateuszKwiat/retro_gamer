@@ -14,7 +14,7 @@ private:
     Paddle* player_one;
     Paddle* player_two;
     Net* net;
-    Score* score;
+    Score* scores;
     Ball* ball;
 
 public:
