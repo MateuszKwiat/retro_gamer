@@ -9,4 +9,5 @@ private:
 
 public:
     Score(const sf::Vector2u& window_size, const float x_position);
+    int operator++(int);
 };

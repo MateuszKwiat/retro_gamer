@@ -3,13 +3,14 @@
 Pong::Pong(const int x_window, const int y_window) {
     window = new sf::RenderWindow(sf::VideoMode(x_window, y_window),
         "Pong", sf::Style::Default);
-    player_one = new Paddle(0.2f, static_cast<float>(window->getSize().x) / 40.f, window->getSize(),
-        sf::Keyboard::W, sf::Keyboard::S);
-    player_two = new Paddle(0.2f, static_cast<float>(window->getSize().x) - static_cast<float>(window->getSize().x) / 40.f,
-        window->getSize(), sf::Keyboard::P, sf::Keyboard::L);
+    player_one = new Paddle(0.2f, static_cast<float>(window->getSize().x) / 40.f,
+        window->getSize(),sf::Keyboard::W, sf::Keyboard::S);
+    player_two = new Paddle(0.2f, static_cast<float>(window->getSize().x) -
+        static_cast<float>(window->getSize().x) / 40.f, window->getSize(), sf::Keyboard::P, sf::Keyboard::L);
     net = new Net(window->getSize());
-    player_one_score = new Score(window->getSize());
-    player_two_score = new Score(window->getSize());
+    player_one_score = new Score(window->getSize(), static_cast<float>(window->getSize().x) / 4.f);
+    player_two_score = new Score(window->getSize(),
+        static_cast<float>(window->getSize().x) - static_cast<float>(window->getSize().x) / 4.f);
     ball = new Ball(static_cast<float>(window->getSize().x) / 100.f, 0.2f, window->getSize());
 }
 
@@ -22,7 +23,7 @@ Pong::~Pong() {
     delete window;
 }
 
-void Pong::run() {
+void Pong::run() const {
     while (window->isOpen())
     {
         sf::Event event;
@@ -48,7 +49,8 @@ void Pong::run() {
         for (const auto net_part : net->get_vector()) {
             window->draw(*net_part);
         }
-        window->draw(*scores);
+        window->draw(*player_one_score);
+        window->draw(*player_two_score);
         window->draw(*ball);
 
         window->display();

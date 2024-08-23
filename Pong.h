@@ -18,5 +18,5 @@ private:
 public:
     Pong(const int x_window, const int y_window);
     ~Pong();
-    void run();
+    void run() const;
 };
