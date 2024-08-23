@@ -1,20 +1,18 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <utility>
-
 #include "Paddle.h"
 #include "Net.h"
 #include "Score.h"
 #include "Ball.h"
 
-class Pong {
+class Pong final {
 private:
     sf::RenderWindow* window;
     Paddle* player_one;
     Paddle* player_two;
     Net* net;
-    Score* scores;
+    Score* player_one_score;
+    Score* player_two_score;
     Ball* ball;
 
 public:

@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <utility>
 
-class Paddle : public sf::RectangleShape {
+class Paddle final : public sf::RectangleShape {
 private:
     float move_value;
     float y_position;

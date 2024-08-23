@@ -1,11 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <math.h>
 
 #include "Paddle.h"
 
-class Ball : public sf::CircleShape {
+class Ball final : public sf::CircleShape {
 private:
     float x_delta;
     float y_delta;
