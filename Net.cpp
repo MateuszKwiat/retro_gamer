@@ -1,7 +1,7 @@
 #include "Net.h"
 
 Net::Net(const sf::Vector2u& window_size) {
-    float half_net_part_length = static_cast<float>(window_size.y) / 61.f;
+    const float half_net_part_length = static_cast<float>(window_size.y) / 61.f;
     float temp_y_position = half_net_part_length * 2.f;
 
     for (int i = 0; i < 20; i++) {

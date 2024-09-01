@@ -2,9 +2,9 @@
 #include "Breakout.h"
 
 int main() {
-    // Pong pong(1920, 1080);
+    // const Pong pong(1920, 1080);
     // pong.run();
 
-    Breakout breakout(1920, 1080);
+    const Breakout breakout(1920, 1080);
     breakout.run();
 }

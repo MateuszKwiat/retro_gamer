@@ -3,27 +3,27 @@
 Pong::Pong(const int x_window, const int y_window) {
     window = new sf::RenderWindow(sf::VideoMode(x_window,
                                                 y_window),
-                                  "Pong",
-                                  sf::Style::Default);
+                                                "Pong",
+                                                sf::Style::Default);
 
-    sf::Vector2f paddle_window_proportions = sf::Vector2f(1.f / 60.f, 1.f / 6.f);
-    sf::Vector2f paddle_size = sf::Vector2f(window->getSize().x * paddle_window_proportions.x,
-                                            window->getSize().y * paddle_window_proportions.y);
+    constexpr float move_value = 0.35f;
 
-    float y_position = static_cast<float>(window->getSize().y) / 2.f;
-    float x_distance_from_wall = static_cast<float>(window->getSize().x) / 40.f;
-    float move_value = 0.35f;
+    const auto paddle_window_proportions = sf::Vector2f(1.f / 60.f, 1.f / 6.f);
+
+    const auto paddle_size = sf::Vector2f(static_cast<float>(window->getSize().x) * paddle_window_proportions.x,
+                                          static_cast<float>(window->getSize().y) * paddle_window_proportions.y);
+
+    const auto paddle_position = sf::Vector2f(static_cast<float>(window->getSize().y) / 2.f,
+                                              static_cast<float>(window->getSize().x) / 40.f);
 
     player_one = new Paddle(move_value,
-                            y_position,
-                            x_distance_from_wall,
+                            paddle_position,
                             paddle_size,
                             sf::Keyboard::W,
                             sf::Keyboard::S);
 
     player_two = new Paddle(move_value,
-                            y_position,
-                            static_cast<float>(window->getSize().x) - x_distance_from_wall,
+                            sf::Vector2f(static_cast<float>(window->getSize().x) - paddle_size.x, paddle_size.y),
                             paddle_size,
                             sf::Keyboard::P,
                             sf::Keyboard::L);
@@ -56,8 +56,8 @@ void Pong::run() const {
                 window->close();
         }
 
-        player_one->move(window->getSize().y);
-        player_two->move(window->getSize().y);
+        player_one->move_vertically(window->getSize().y);
+        player_two->move_vertically(window->getSize().y);
 
         ball->move();
         ball->collisions(window->getSize(), *player_one, *player_two, *player_one_score, *player_two_score);
