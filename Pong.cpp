@@ -7,32 +7,22 @@ Pong::Pong(const int x_window, const int y_window) {
                                                 sf::Style::Default);
 
     constexpr float move_value = 0.35f;
-
     const auto paddle_window_proportions = sf::Vector2f(1.f / 60.f, 1.f / 6.f);
-
     const auto paddle_size = sf::Vector2f(static_cast<float>(window->getSize().x) * paddle_window_proportions.x,
                                           static_cast<float>(window->getSize().y) * paddle_window_proportions.y);
 
     const auto paddle_position = sf::Vector2f(static_cast<float>(window->getSize().y) / 2.f,
                                               static_cast<float>(window->getSize().x) / 40.f);
 
-    player_one = new Paddle(move_value,
-                            paddle_position,
-                            paddle_size,
-                            sf::Keyboard::W,
-                            sf::Keyboard::S);
-
-    player_two = new Paddle(move_value,
-                            sf::Vector2f(static_cast<float>(window->getSize().x) - paddle_size.x, paddle_size.y),
-                            paddle_size,
-                            sf::Keyboard::P,
-                            sf::Keyboard::L);
+    player_one = new Paddle(move_value, paddle_position, paddle_size, sf::Keyboard::W, sf::Keyboard::S);
+    player_two = new Paddle(move_value, sf::Vector2f(static_cast<float>(window->getSize().x) - paddle_size.x,
+                            paddle_size.y), paddle_size, sf::Keyboard::P, sf::Keyboard::L);
 
     net = new Net(window->getSize());
-    player_one_score = new Score(window->getSize(), static_cast<float>(window->getSize().x) / 4.f);
-    player_two_score = new Score(window->getSize(),
-        static_cast<float>(window->getSize().x) - static_cast<float>(window->getSize().x) / 4.f);
     ball = new Ball(static_cast<float>(window->getSize().x) / 100.f, 0.4f, window->getSize());
+    player_one_score = new Score(window->getSize(), static_cast<float>(window->getSize().x) / 4.f);
+    player_two_score = new Score(window->getSize(), static_cast<float>(window->getSize().x)
+                                                    - static_cast<float>(window->getSize().x) / 4.f);
 }
 
 Pong::~Pong() {

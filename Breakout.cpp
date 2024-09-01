@@ -14,11 +14,7 @@ Breakout::Breakout(const int x_window, const int y_window) {
     const auto paddle_position = sf::Vector2f(static_cast<float>(window->getSize().x) / 2.f,
                                               static_cast<float>(window->getSize().y) - paddle_size.y * 2.f);
 
-    paddle = new Paddle(move_value,
-                        paddle_position,
-                        paddle_size,
-                        sf::Keyboard::Left,
-                        sf::Keyboard::Right);
+    paddle = new Paddle(move_value, paddle_position, paddle_size, sf::Keyboard::Left, sf::Keyboard::Right);
 }
 
 Breakout::~Breakout() {
