@@ -7,11 +7,13 @@ class Paddle final : public sf::RectangleShape {
 private:
     float move_value;
     float y_position;
-    sf::Keyboard::Key up_key;
-    sf::Keyboard::Key down_key;
+    float x_position;
+
+    sf::Keyboard::Key first_key;
+    sf::Keyboard::Key second_key;
 
 public:
-    Paddle(const float move_value,const float x_position, const sf::Vector2u&& window_size,
-        const sf::Keyboard::Key&& up_key, const sf::Keyboard::Key&& down_key);
+    Paddle(const float move_value, const float y_position, const float x_position, const sf::Vector2f& size,
+        const sf::Keyboard::Key&& first_key, const sf::Keyboard::Key&& second_key);
     void move(const unsigned int y_window);
 };

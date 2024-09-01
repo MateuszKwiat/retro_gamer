@@ -1,12 +1,33 @@
 #include "Pong.h"
 
 Pong::Pong(const int x_window, const int y_window) {
-    window = new sf::RenderWindow(sf::VideoMode(x_window, y_window),
-        "Pong", sf::Style::Default);
-    player_one = new Paddle(0.35f, static_cast<float>(window->getSize().x) / 40.f,
-        window->getSize(),sf::Keyboard::W, sf::Keyboard::S);
-    player_two = new Paddle(0.35f, static_cast<float>(window->getSize().x) -
-        static_cast<float>(window->getSize().x) / 40.f, window->getSize(), sf::Keyboard::P, sf::Keyboard::L);
+    window = new sf::RenderWindow(sf::VideoMode(x_window,
+                                                y_window),
+                                  "Pong",
+                                  sf::Style::Default);
+
+    sf::Vector2f paddle_window_proportions = sf::Vector2f(1.f / 60.f, 1.f / 6.f);
+    sf::Vector2f paddle_size = sf::Vector2f(window->getSize().x * paddle_window_proportions.x,
+                                            window->getSize().y * paddle_window_proportions.y);
+
+    float y_position = static_cast<float>(window->getSize().y) / 2.f;
+    float x_distance_from_wall = static_cast<float>(window->getSize().x) / 40.f;
+    float move_value = 0.35f;
+
+    player_one = new Paddle(move_value,
+                            y_position,
+                            x_distance_from_wall,
+                            paddle_size,
+                            sf::Keyboard::W,
+                            sf::Keyboard::S);
+
+    player_two = new Paddle(move_value,
+                            y_position,
+                            static_cast<float>(window->getSize().x) - x_distance_from_wall,
+                            paddle_size,
+                            sf::Keyboard::P,
+                            sf::Keyboard::L);
+
     net = new Net(window->getSize());
     player_one_score = new Score(window->getSize(), static_cast<float>(window->getSize().x) / 4.f);
     player_two_score = new Score(window->getSize(),
