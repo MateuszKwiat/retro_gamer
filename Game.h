@@ -14,4 +14,6 @@ public:
     Game(const unsigned int& window_width, const unsigned int& window_height);
     virtual ~Game();
     void run() const;
+    const sf::RenderWindow* get_const_window() const {return window;}
+    sf::RenderWindow* get_window() const {return window;}
 };

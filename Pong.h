@@ -1,13 +1,13 @@
 #pragma once
 
+#include "Game.h"
 #include "Paddle.h"
 #include "Net.h"
 #include "Score.h"
 #include "Ball.h"
 
-class Pong final {
+class Pong final : public Game {
 private:
-    sf::RenderWindow* window;
     Paddle* player_one;
     Paddle* player_two;
     Net* net;
@@ -15,8 +15,11 @@ private:
     Score* player_two_score;
     Ball* ball;
 
+    void draw() const override;
+    void handle_collisions() const override;
+    void handle_movement() const override;
+
 public:
-    Pong(const int x_window, const int y_window);
-    ~Pong();
-    void run() const;
+    Pong(const int window_width, const int window_height);
+    ~Pong() override;
 };
