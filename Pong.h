@@ -17,13 +17,13 @@ private:
 
 private:
     void draw() const override;
-    void handle_collisions() const override;
-    void handle_movement() const override;
+    void handleCollisions() const override;
+    void handleMovement() const override;
     void initializer() override;
-    void initialize_paddles();
-    void initialize_net();
-    void initialize_scores();
-    void initialize_ball();
+    void initializePaddles();
+    void initializeNet();
+    void initializeScores();
+    void initializeBall();
 
 public:
     Pong(const int window_width, const int window_height);

@@ -16,6 +16,6 @@ public:
             const sf::Keyboard::Key&& first_key,
             const sf::Keyboard::Key&& second_key);
 
-    void move_vertically(const unsigned int y_window);
-    void move_horizontally(const unsigned int x_window);
+    void moveVertically(const unsigned int y_window);
+    void moveHorizontally(const unsigned int x_window);
 };

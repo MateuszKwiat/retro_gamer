@@ -5,13 +5,13 @@ Pong::Pong(const int window_width, const int window_height) : Game(window_width,
 }
 
 void Pong::initializer() {
-    this->initialize_paddles();
-    this->initialize_net();
-    this->initialize_scores();
-    this->initialize_ball();
+    this->initializePaddles();
+    this->initializeNet();
+    this->initializeScores();
+    this->initializeBall();
 }
 
-void Pong::initialize_paddles() {
+void Pong::initializePaddles() {
     constexpr float move_value = 0.35f;
     const auto paddle_window_proportions = sf::Vector2f(1.f / 60.f, 1.f / 6.f);
     const auto paddle_size = sf::Vector2f(static_cast<float>(Game::window->getSize().x) * paddle_window_proportions.x,
@@ -26,23 +26,22 @@ void Pong::initialize_paddles() {
 
 }
 
-void Pong::initialize_net() {
+void Pong::initializeNet() {
     net = new Net(Game::window->getSize());
 }
 
-void Pong::initialize_scores() {
+void Pong::initializeScores() {
     const float score_distance_from_wall = static_cast<float>(Game::window->getSize().x) / 4.f;
     player_one_score = new Score(Game::window->getSize(), score_distance_from_wall);
     player_two_score = new Score(Game::window->getSize(), static_cast<float>(Game::window->getSize().x)
                                                     - score_distance_from_wall);
 }
 
-void Pong::initialize_ball() {
+void Pong::initializeBall() {
     const float ball_radius = static_cast<float>(Game::window->getSize().x) / 100.f;
     constexpr float delta_value = 0.4f;
 
     ball = new Ball(ball_radius, delta_value, Game::window->getSize());
-
 }
 
 Pong::~Pong() {
@@ -54,14 +53,14 @@ Pong::~Pong() {
     delete ball;
 }
 
-void Pong::handle_collisions() const {
+void Pong::handleCollisions() const {
     ball->collisions(Game::window->getSize(), *player_one, *player_two, *player_one_score, *player_two_score);
 
 }
 
-void Pong::handle_movement() const {
-    player_two->move_vertically(Game::window->getSize().y);
-    player_one->move_vertically(Game::window->getSize().y);
+void Pong::handleMovement() const {
+    player_two->moveVertically(Game::window->getSize().y);
+    player_one->moveVertically(Game::window->getSize().y);
 
     ball->move();
 }
@@ -70,7 +69,7 @@ void Pong::draw() const {
     Game::window->draw(*player_two);
     Game::window->draw(*player_one);
 
-    for (const auto net_part : net->get_vector()) {
+    for (const auto net_part : net->getVector()) {
         Game::window->draw(*net_part);
     }
     Game::window->draw(*player_one_score);

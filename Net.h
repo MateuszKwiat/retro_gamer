@@ -9,5 +9,5 @@ private:
 
 public:
     explicit Net(const sf::Vector2u& window_size);
-    const std::vector<sf::RectangleShape*>& get_vector() { return net_parts; }
+    const std::vector<sf::RectangleShape*>& getVector() { return net_parts; }
 };

@@ -8,8 +8,8 @@ protected:
 
 private:
     virtual void draw() const = 0;
-    virtual void handle_collisions() const = 0;
-    virtual void handle_movement() const = 0;
+    virtual void handleCollisions() const = 0;
+    virtual void handleMovement() const = 0;
     virtual void initializer() = 0;
 
 public:

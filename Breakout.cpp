@@ -1,10 +1,17 @@
 #include "Breakout.h"
 
 Breakout::Breakout(const int window_width, const int window_height) : Game(window_width, window_height) {
+    this->initializer();
+}
+
+void Breakout::initializer() {
+    this->initializePaddle();
+    this->initializeBall();
+}
+
+void Breakout::initializePaddle() {
     constexpr float move_value = 0.35f;
-
     const auto paddle_window_proportions = sf::Vector2f(1.f / 10.f, 1.f / 35.f);
-
     const auto paddle_size = sf::Vector2f(static_cast<float>(Game::window->getSize().x) * paddle_window_proportions.x,
                                           static_cast<float>(Game::window->getSize().y) * paddle_window_proportions.y);
 
@@ -14,20 +21,27 @@ Breakout::Breakout(const int window_width, const int window_height) : Game(windo
     paddle = new Paddle(move_value, paddle_position, paddle_size, sf::Keyboard::Left, sf::Keyboard::Right);
 }
 
+void Breakout::initializeBall() {
+    const float ball_radius = static_cast<float>(Game::window->getSize().x) / 100.f;
+    constexpr float delta_value = 0.4f;
+
+    ball = new Ball(ball_radius, delta_value, Game::window->getSize());
+}
+
 Breakout::~Breakout() {
     delete paddle;
 }
 
-void Breakout::handle_collisions() const {
-
+void Breakout::handleCollisions() const {
+    ball->collisions(Game::window->getSize(), *paddle);
 }
 
-void Breakout::handle_movement() const {
-    paddle->move_horizontally(Game::window->getSize().x);
-
+void Breakout::handleMovement() const {
+    paddle->moveHorizontally(Game::window->getSize().x);
+    ball->move();
 }
 
 void Breakout::draw() const {
     Game::window->draw(*paddle);
-
+    Game::window->draw(*ball);
 }

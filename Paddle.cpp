@@ -15,7 +15,7 @@ Paddle::Paddle(const float move_value,
     this->setPosition(sf::Vector2f(position.x, position.y));
 }
 
-void Paddle::move_vertically(const unsigned int y_window) {
+void Paddle::moveVertically(const unsigned int y_window) {
     if (sf::Keyboard::isKeyPressed(first_key) && position.y > this->getSize().y / 2.f) {
         position.y -= move_value;
         this->setPosition(sf::Vector2f(position.x, position.y));
@@ -26,7 +26,7 @@ void Paddle::move_vertically(const unsigned int y_window) {
     }
 }
 
-void Paddle::move_horizontally(const unsigned int x_window) {
+void Paddle::moveHorizontally(const unsigned int x_window) {
     if (sf::Keyboard::isKeyPressed(first_key) && position.x > this->getSize().x / 2.f) {
         position.x -= move_value;
         this->setPosition(sf::Vector2f(position.x, position.y));

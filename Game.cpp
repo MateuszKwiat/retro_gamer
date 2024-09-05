@@ -23,8 +23,8 @@ void Game::run() const {
 
         window->clear();
 
-        this->handle_movement();
-        this->handle_collisions();
+        this->handleMovement();
+        this->handleCollisions();
         this->draw();
 
         window->display();
