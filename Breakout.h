@@ -2,12 +2,12 @@
 
 #include "Game.h"
 #include "Paddle.h"
-#include "Ball.h"
+#include "BreakoutBall.h"
 
 class Breakout final : public Game {
 private:
     Paddle *paddle{};
-    Ball *ball{};
+    BreakoutBall *ball{};
 
 private:
     void draw() const override;

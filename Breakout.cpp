@@ -25,7 +25,7 @@ void Breakout::initializeBall() {
     const float ball_radius = static_cast<float>(Game::window->getSize().x) / 100.f;
     constexpr float delta_value = 0.4f;
 
-    ball = new Ball(ball_radius, delta_value, Game::window->getSize());
+    ball = new BreakoutBall(ball_radius, delta_value, Game::window->getSize());
 }
 
 Breakout::~Breakout() {

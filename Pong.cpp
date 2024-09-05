@@ -41,7 +41,7 @@ void Pong::initializeBall() {
     const float ball_radius = static_cast<float>(Game::window->getSize().x) / 100.f;
     constexpr float delta_value = 0.4f;
 
-    ball = new Ball(ball_radius, delta_value, Game::window->getSize());
+    ball = new PongBall(ball_radius, delta_value, Game::window->getSize());
 }
 
 Pong::~Pong() {

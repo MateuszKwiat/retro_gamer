@@ -4,7 +4,7 @@
 #include "Paddle.h"
 #include "Net.h"
 #include "Score.h"
-#include "Ball.h"
+#include "PongBall.h"
 
 class Pong final : public Game {
 private:
@@ -13,7 +13,7 @@ private:
     Net* net{};
     Score* player_one_score{};
     Score* player_two_score{};
-    Ball* ball{};
+    PongBall* ball{};
 
 private:
     void draw() const override;
