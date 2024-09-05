@@ -7,39 +7,6 @@ Ball::Ball(const float radius, const float delta_value, const sf::Vector2u& wind
     this->setPosition(sf::Vector2f(static_cast<float>(window_size.x) / 2.f, static_cast<float>(window_size.y) / 2.f));
 }
 
-
-void Ball::paddleCollision(const Paddle &paddle) {
-    if (y_delta > 0 && this->getGlobalBounds().intersects(paddle.getGlobalBounds())) {
-        y_delta = -y_delta;
-    }
-}
-
-bool Ball::wallCollision(const sf::Vector2u& window_size, Score& player_one_score, Score& player_two_score) {
-
-}
-
-void Ball::wallCollision(const sf::Vector2u& window_size) {
-    if (this->getPosition().x - this->getRadius() < 0 || this->getPosition().x + this->getRadius() > static_cast<float>(window_size.x)) {
-        x_delta = -x_delta;
-    }
-    if (this->getPosition().y - this->getRadius() < 0 || this->getPosition().y + this->getRadius() > static_cast<float>(window_size.y)) {
-        y_delta = -y_delta;
-    }
-}
-
 void Ball::move() {
     this->setPosition(sf::Vector2f(this->getPosition().x + x_delta, this->getPosition().y + y_delta));
-}
-
-void Ball::collisions(const sf::Vector2u&& window_size, const Paddle& player_one, const Paddle& player_two,
-    Score& player_one_score, Score& player_two_score) {
-    if (this->wallCollision(window_size, player_one_score, player_two_score)) {
-        y_delta = -y_delta;
-    }
-    this->paddleCollision(player_one, player_two);
-}
-
-void Ball::collisions(const sf::Vector2u& window_size, const Paddle& paddle) {
-    this->wallCollision(window_size);
-    this->paddleCollision(paddle);
 }
