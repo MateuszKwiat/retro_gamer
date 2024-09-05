@@ -1,15 +1,18 @@
 #pragma once;
 
-#include  <SFML/Graphics.hpp>
+#include "Game.h"
 #include "Paddle.h"
 
-class Breakout final {
+class Breakout final : public Game {
 private:
-    sf::RenderWindow *window;
     Paddle *paddle;
 
+    void draw() const override;
+    void handle_collisions() const override;
+    void handle_movement() const override;
+
+
 public:
-    Breakout(const int x_window, const int y_window);
-    ~Breakout();
-    void run() const;
+    Breakout(const int window_width, const int window_height);
+    ~Breakout() override;
 };
