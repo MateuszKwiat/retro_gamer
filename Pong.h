@@ -19,6 +19,7 @@ private:
     void draw() const override;
     void handleCollisions() const override;
     void handleMovement() const override;
+    void handleEndGame() const override;
     void initializer() override;
     void initializePaddles();
     void initializeNet();

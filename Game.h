@@ -10,6 +10,7 @@ private:
     virtual void draw() const = 0;
     virtual void handleCollisions() const = 0;
     virtual void handleMovement() const = 0;
+    virtual void handleEndGame() const = 0;
     virtual void initializer() = 0;
 
 public:

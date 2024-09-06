@@ -32,9 +32,10 @@ void Pong::initializeNet() {
 
 void Pong::initializeScores() {
     const float score_distance_from_wall = static_cast<float>(Game::window->getSize().x) / 4.f;
-    player_one_score = new Score(Game::window->getSize(), score_distance_from_wall);
+    constexpr int max_score = 15;
+    player_one_score = new Score(Game::window->getSize(), score_distance_from_wall, max_score);
     player_two_score = new Score(Game::window->getSize(), static_cast<float>(Game::window->getSize().x)
-                                                    - score_distance_from_wall);
+                                                    - score_distance_from_wall, max_score);
 }
 
 void Pong::initializeBall() {
@@ -65,6 +66,22 @@ void Pong::handleMovement() const {
     ball->move();
 }
 
+void Pong::handleEndGame() const {
+    if (player_one_score->reachedMaxScore() || player_two_score->reachedMaxScore()) {
+        player_one->setMoveValue(0.f);
+        ball->setDeltas(0.f);
+        if (player_one_score->reachedMaxScore()) {
+            player_one_score->victory(true, Game::window->getSize(), "player one");
+            player_two_score->victory(false);
+        }
+        else {
+            player_two_score->victory(true, Game::window->getSize(), "player two");
+            player_one_score->victory(false);
+        }
+    }
+}
+
+
 void Pong::draw() const {
     Game::window->draw(*player_two);
     Game::window->draw(*player_one);
@@ -72,7 +89,7 @@ void Pong::draw() const {
     for (const auto net_part : net->getVector()) {
         Game::window->draw(*net_part);
     }
+    Game::window->draw(*ball);
     Game::window->draw(*player_one_score);
     Game::window->draw(*player_two_score);
-    Game::window->draw(*ball);
 }

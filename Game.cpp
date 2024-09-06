@@ -25,6 +25,7 @@ void Game::run() const {
 
         this->handleMovement();
         this->handleCollisions();
+        this->handleEndGame();
         this->draw();
 
         window->display();
