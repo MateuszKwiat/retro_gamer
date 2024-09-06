@@ -18,7 +18,20 @@ void BreakoutBall::wallCollision(const sf::Vector2u &window_size) {
     }
 }
 
-void BreakoutBall::collisions(const sf::Vector2u& window_size, const Paddle& paddle) {
+void BreakoutBall::brickCollision(Brick& brick) {
+    if (this->getGlobalBounds().intersects(brick.getGlobalBounds())) {
+        brick.setInGame(false);
+        if (this->getPosition().y > brick.getPosition().y - (brick.getSize().y / 2.f)
+            && this->getPosition().y < brick.getPosition().y + (brick.getSize().y / 2.f)) {
+            x_delta = -x_delta;
+        }
+        else if (y_delta < 0) {
+            y_delta = -y_delta;
+        }
+    }
+}
+
+void BreakoutBall::collisions(const sf::Vector2u &window_size, const Paddle &paddle) {
     this->wallCollision(window_size);
     this->paddleCollision(paddle);
 }

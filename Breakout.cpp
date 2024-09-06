@@ -42,6 +42,9 @@ Breakout::~Breakout() {
 
 void Breakout::handleCollisions() const {
     ball->collisions(Game::window->getSize(), *paddle);
+    for (auto brick : bricks->getVector())
+        if (brick->inGame())
+            ball->brickCollision(*brick);
 }
 
 void Breakout::handleMovement() const {
@@ -53,5 +56,6 @@ void Breakout::draw() const {
     Game::window->draw(*paddle);
     Game::window->draw(*ball);
     for (const auto brick : bricks->getVector())
-        Game::window->draw(*brick);
+        if (brick->inGame())
+            Game::window->draw(*brick);
 }
