@@ -31,7 +31,7 @@ void Breakout::initializeBall() {
 
 void Breakout::initializeBricks() {
     const auto brick_size = sf::Vector2f((static_cast<float>(Game::window->getSize().x) - 9.f) / 10.f,
-        ((static_cast<float>(Game::window->getSize().y) / 3.f) - 4.f) / 5.f);
+        ((static_cast<float>(Game::window->getSize().y) / 3.f) - 4.f) / 7.f);
     bricks = new BricksVector(brick_size);
 }
 
@@ -42,7 +42,7 @@ Breakout::~Breakout() {
 
 void Breakout::handleCollisions() const {
     ball->collisions(Game::window->getSize(), *paddle);
-    for (auto brick : bricks->getVector())
+    for (const auto brick : bricks->getVector())
         if (brick->inGame())
             ball->brickCollision(*brick);
 }
@@ -50,6 +50,10 @@ void Breakout::handleCollisions() const {
 void Breakout::handleMovement() const {
     paddle->moveHorizontally(Game::window->getSize().x);
     ball->move();
+}
+
+void Breakout::handleEndGame() const {
+
 }
 
 void Breakout::draw() const {

@@ -2,7 +2,7 @@
 
 BricksVector::BricksVector(const sf::Vector2f& brick_size) {
     float current_x_position = brick_size.x / 2.f;
-    float current_y_position = brick_size.y / 2.f;
+    float current_y_position = brick_size.y / 2.f + brick_size.y * 2.f;
     auto brick_index = 0;
 
     for (auto i = 0; i < 5; i++) {
