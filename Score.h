@@ -3,15 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class Score final : public sf::Text {
+class Score : public sf::Text {
 private:
     int score;
-    int max_score;
     sf::Font font;
 
 public:
-    Score(const sf::Vector2u& window_size, const float x_position, int max_score);
-    bool reachedMaxScore() const;
-    void victory(const bool won, const sf::Vector2u& window_size = sf::Vector2u(), const std::string& player_name = "");
+    Score(const sf::Vector2u& window_size, const sf::Vector2f& position, const std::string& text, int starting_score);
+    virtual bool reachedScore() const = 0;
     int operator++(int);
+    int operator--(int);
 };

@@ -1,9 +1,7 @@
 #include "Game.h"
 
-#include <__random/binomial_distribution.h>
-
 Game::Game(const unsigned int& window_width, const unsigned int& window_height, const sf::Keyboard::Key& game_start_key) :
-can_play(false), game_start_key(game_start_key) {
+game_start_key(game_start_key), can_play(false) {
     window = new sf::RenderWindow(sf::VideoMode(window_width, window_height),
            "Retro Gamer", sf::Style::Default);
     // window->setFramerateLimit(120);
