@@ -20,7 +20,7 @@ void Game::game_start() {
 void Game::run() {
     while (window->isOpen())
     {
-        sf::Event event;
+        sf::Event event{};
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed ||
                 (event.type == sf::Event::KeyPressed &&

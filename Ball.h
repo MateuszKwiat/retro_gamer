@@ -8,6 +8,6 @@ protected:
     float y_delta;
 
 public:
-    Ball(const float radius, const float delta_value, const sf::Vector2u& window_size);
+    Ball(float radius, float delta_value, const sf::Vector2u& window_size);
     void move();
 };

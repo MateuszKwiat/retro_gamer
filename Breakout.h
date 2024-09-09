@@ -22,6 +22,6 @@ private:
     void initializeBricks();
 
 public:
-    Breakout(const int window_width, const int window_height, const sf::Keyboard::Key game_start_key);
+    Breakout(int window_width, int window_height, sf::Keyboard::Key game_start_key);
     ~Breakout() override;
 };

@@ -8,7 +8,7 @@ score(starting_score) {
 
     this->setFont(font);
     this->setString(text + std::to_string(score));
-    this->setCharacterSize(window_size.y / 10u);
+    this->setCharacterSize(window_size.y / 15u);
     this->setFillColor(sf::Color::White);
     this->setPosition(sf::Vector2f(position.x - this->getLocalBounds().width / 2.f,
                                     position.y - this->getLocalBounds().height / 2.f));
