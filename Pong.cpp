@@ -33,10 +33,14 @@ void Pong::initializeNet() {
 
 void Pong::initializeScores() {
     const float score_distance_from_wall = static_cast<float>(Game::window->getSize().x) / 4.f;
+    const float score_y_placement = static_cast<float>(Game::window->getSize().y) / 20.f;
     constexpr int max_score = 15;
-    player_one_score = new Score(Game::window->getSize(), score_distance_from_wall, max_score);
-    player_two_score = new Score(Game::window->getSize(), static_cast<float>(Game::window->getSize().x)
-                                                    - score_distance_from_wall, max_score);
+    constexpr int starting_score = 0;
+    player_one_score = new PlayerScore(Game::window->getSize(), sf::Vector2f(score_distance_from_wall,
+                                        score_y_placement), "", starting_score, max_score);
+
+    player_two_score = new PlayerScore(Game::window->getSize(), sf::Vector2f(static_cast<float>(Game::window->getSize().x)
+                                        - score_distance_from_wall, score_y_placement), "", starting_score, max_score);
 }
 
 void Pong::initializeBall() {
@@ -68,10 +72,10 @@ void Pong::handleMovement() const {
 }
 
 void Pong::handleEndGame() const {
-    if (player_one_score->reachedMaxScore() || player_two_score->reachedMaxScore()) {
+    if (player_one_score->reachedScore() || player_two_score->reachedScore()) {
         player_one->setMoveValue(0.f);
         ball->setDeltas(0.f);
-        if (player_one_score->reachedMaxScore()) {
+        if (player_one_score->reachedScore()) {
             player_one_score->victory(true, Game::window->getSize(), "player one");
             player_two_score->victory(false);
         }

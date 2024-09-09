@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "Paddle.h"
 #include "Net.h"
-#include "Score.h"
+#include "PlayerScore.h"
 #include "PongBall.h"
 
 class Pong final : public Game {
@@ -11,8 +11,8 @@ private:
     Paddle* player_one{};
     Paddle* player_two{};
     Net* net{};
-    Score* player_one_score{};
-    Score* player_two_score{};
+    PlayerScore* player_one_score{};
+    PlayerScore* player_two_score{};
     PongBall* ball{};
 
 private:
@@ -27,6 +27,6 @@ private:
     void initializeBall();
 
 public:
-    Pong(const int window_width, const int window_height, const sf::Keyboard::Key game_start_key);
+    Pong(int window_width, int window_height, sf::Keyboard::Key game_start_key);
     ~Pong() override;
 };
