@@ -1,6 +1,7 @@
 #include "Breakout.h"
 
-Breakout::Breakout(const int window_width, const int window_height) : Game(window_width, window_height) {
+Breakout::Breakout(const int window_width, const int window_height, const sf::Keyboard::Key game_start_key) :
+Game(window_width, window_height, game_start_key) {
     this->initializer();
 }
 

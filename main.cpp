@@ -2,9 +2,9 @@
 #include "Breakout.h"
 
 int main() {
-    // const Pong pong(1920, 1080);
+    // Pong pong(1920, 1080, sf::Keyboard::Key::Space);
     // pong.run();
 
-    const Breakout breakout(1920, 1080);
+    Breakout breakout(1920, 1080, sf::Keyboard::Key::Space);
     breakout.run();
 }

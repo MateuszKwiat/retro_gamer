@@ -27,6 +27,6 @@ private:
     void initializeBall();
 
 public:
-    Pong(const int window_width, const int window_height);
+    Pong(const int window_width, const int window_height, const sf::Keyboard::Key game_start_key);
     ~Pong() override;
 };
