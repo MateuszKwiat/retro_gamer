@@ -4,7 +4,7 @@
 
 #include "Score.h"
 
-class PlayerScore : public Score {
+class PlayerScore final : public Score {
 private:
     int max_score;
 
