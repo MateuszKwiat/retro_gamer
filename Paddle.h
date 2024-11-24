@@ -19,4 +19,5 @@ public:
     void moveVertically(unsigned int y_window);
     void moveHorizontally(unsigned int x_window);
     void setMoveValue(const float move_value) {this->move_value = move_value;}
+    void resetHorizontally(unsigned int x_window);
 };

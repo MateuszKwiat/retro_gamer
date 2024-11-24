@@ -4,7 +4,7 @@ Game::Game(const unsigned int& window_width, const unsigned int& window_height, 
 game_start_key(game_start_key), can_play(false) {
     window = new sf::RenderWindow(sf::VideoMode(window_width, window_height),
            "Retro Gamer", sf::Style::Default);
-    // window->setFramerateLimit(120);
+    window->setFramerateLimit(120);
 }
 
 Game::~Game() {

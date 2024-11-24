@@ -36,3 +36,8 @@ void Paddle::moveHorizontally(const unsigned int x_window) {
         this->setPosition(sf::Vector2f(position.x, position.y));
     }
 }
+
+void Paddle::resetHorizontally(const unsigned int x_window) {
+    position.x = static_cast<float>(x_window) / 2.f;
+    this->setPosition(sf::Vector2f(position.x, position.y));
+}

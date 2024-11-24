@@ -9,12 +9,17 @@ void BreakoutBall::paddleCollision(const Paddle& paddle) {
     }
 }
 
-void BreakoutBall::wallCollision(const sf::Vector2u &window_size) {
+void BreakoutBall::wallCollision(const sf::Vector2u &window_size, Paddle& paddle,  bool& can_play) {
     if (this->getPosition().x - this->getRadius() < 0 || this->getPosition().x + this->getRadius() > static_cast<float>(window_size.x)) {
         x_delta = -x_delta;
     }
-    if (this->getPosition().y - this->getRadius() < 0 || this->getPosition().y + this->getRadius() > static_cast<float>(window_size.y)) {
+    if (this->getPosition().y < 0) {
         y_delta = -y_delta;
+    }
+    if (this->getPosition().y + this->getRadius() > static_cast<float>(window_size.y)) {
+        this->setPosition(sf::Vector2f(static_cast<float>(window_size.x) / 2.f, static_cast<float>(window_size.y) / 2.f));
+        paddle.resetHorizontally(window_size.x);
+        can_play = false;
     }
 }
 
@@ -31,7 +36,7 @@ void BreakoutBall::brickCollision(Brick& brick) {
     }
 }
 
-void BreakoutBall::collisions(const sf::Vector2u &window_size, const Paddle &paddle) {
-    this->wallCollision(window_size);
+void BreakoutBall::collisions(const sf::Vector2u &window_size, Paddle &paddle, bool& can_play) {
+    this->wallCollision(window_size, paddle, can_play);
     this->paddleCollision(paddle);
 }

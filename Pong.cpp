@@ -59,7 +59,7 @@ Pong::~Pong() {
     delete ball;
 }
 
-void Pong::handleCollisions() const {
+void Pong::handleCollisions() {
     ball->collisions(Game::window->getSize(), *player_one, *player_two, *player_one_score, *player_two_score);
 
 }

@@ -17,7 +17,7 @@ private:
 
 private:
     void draw() const override;
-    void handleCollisions() const override;
+    void handleCollisions() override;
     void handleMovement() const override;
     void handleEndGame() const override;
     void initializer() override;
